@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Job board</title>
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-hover: #1d4ed8;
+        --border: #e2e8f0;
+        --bg-card: #ffffff;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --danger: #dc2626;
+        --danger-bg: #fef2f2;
+      }
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        margin: 0 auto;
+        max-width: 640px;
+        padding: 24px 16px;
+        color: var(--text-main);
+        background-color: #fafafa;
+      }
+      h1 {
+        margin: 0 0 20px 0;
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 28px;
+        margin-bottom: 12px;
+      }
+      h2 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+      }
+      .badge {
+        font-size: 12px;
+        font-weight: 600;
+        background: #e2e8f0;
+        color: #475569;
+        padding: 2px 8px;
+        border-radius: 12px;
+      }
+      ul {
+        padding: 0;
+        margin: 0;
+      }
+      li {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        list-style: none;
+        margin: 10px 0;
+        padding: 14px;
+        transition: border-color 0.15s ease;
+      }
+      li:hover {
+        border-color: #cbd5e1;
+      }
+      .job-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+      }
+      .job-info {
+        flex: 1;
+        line-height: 1.5;
+      }
+      .job-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: #0f172a;
+      }
+      .job-meta {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-top: 3px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+      }
+      .tag {
+        display: inline-block;
+        padding: 1px 6px;
+        font-size: 12px;
+        border-radius: 4px;
+        background: #f1f5f9;
+        color: #475569;
+      }
+      .tag-remote {
+        background: #ecfdf5;
+        color: #047857;
+      }
+      .stipend {
+        font-weight: 600;
+        color: #0f172a;
+      }
+      button {
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 500;
+        padding: 6px 14px;
+        border-radius: 6px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        white-space: nowrap;
+      }
+      .btn-save {
+        background: var(--primary);
+        color: #ffffff;
+      }
+      .btn-save:hover {
+        background: var(--primary-hover);
+      }
+      .btn-saved {
+        background: #f1f5f9;
+        color: #64748b;
+        border: 1px solid #cbd5e1;
+        cursor: default;
+      }
+      .btn-remove {
+        background: var(--danger-bg);
+        color: var(--danger);
+        border: 1px solid #fecaca;
+      }
+      .btn-remove:hover {
+        background: #fee2e2;
+      }
+      input {
+        font-family: inherit;
+        font-size: 14px;
+        padding: 10px 12px;
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        background: var(--bg-card);
+        color: var(--text-main);
+        outline: none;
+        transition: border-color 0.15s ease;
+      }
+      input:focus {
+        border-color: var(--primary);
+      }
+      .empty-msg {
+        color: var(--text-muted);
+        font-style: italic;
+        background: transparent;
+        border: 1px dashed var(--border);
+        text-align: center;
+        padding: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Job board</h1>
+
+    <section>
+      <div class="section-header">
+        <h2>Saved jobs</h2>
+        <span id="saved-count" class="badge">0</span>
+      </div>
+      <ul id="saved-jobs"></ul>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <h2>All jobs</h2>
+      </div>
+      <input id="search" placeholder="Search by title, company or place" />
+      <ul id="jobs"></ul>
+    </section>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
